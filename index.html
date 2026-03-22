@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   2025 혁신소상공인 투자연계지원(LIPSⅡ) 중간점검 실무 매뉴얼
+  </title>
+  <link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" rel="stylesheet"/>
+  <style>
+   :root {
+            --primary-color: #2F6BFF;
+            --primary-light: #E8EFFF;
+            --text-dark: #1A1A1B;
+            --text-gray: #4A5568;
+            --text-light: #A0AEC0;
+            --bg-color: #F7FAFC;
+            --surface-color: #FFFFFF;
+            --border-color: #E2E8F0;
+            --danger-color: #E53E3E;
+            --danger-light: #FFF5F5;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 320px;
+            background-color: var(--surface-color);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.4;
+        }
+
+        .sidebar-header p {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .nav-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-button {
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-button:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        .nav-button.active {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            box-shadow: var(--shadow);
+        }
+
+        .step-number {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: rgba(0,0,0,0.1);
+            margin-right: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .nav-button.active .step-number {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .progress-bar-container {
+            height: 4px;
+            background-color: var(--border-color);
+            width: 100%;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .slide-container {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--surface-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 48px;
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .slide-important {
+            background-color: var(--danger-light);
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .slide-important .slide-title {
+            color: var(--danger-color);
+            border-bottom-color: rgba(229, 62, 62, 0.2);
+        }
+
+        .content-section {
+            margin-bottom: 32px;
+        }
+
+        .content-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section h3::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--primary-color);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+
+        ul, ol {
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
+        li strong {
+            color: var(--text-dark);
+            background-color: var(--primary-light);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Checkbox list style */
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 16px;
+            background-color: #fafbfc;
+            padding: 16px 16px 16px 48px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            color: var(--primary-color);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        /* Link Buttons */
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .file-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 24px;
+            background-color: #fff;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .file-link-btn span.icon {
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+
+        .file-link-btn:hover {
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Footer controls */
+        .controls {
+            padding: 24px 40px;
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-prev {
+            background-color: white;
+            color: var(--text-gray);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-prev:hover:not(:disabled) {
+            background-color: #f1f5f9;
+        }
+
+        .btn-next {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 6px rgba(47, 107, 255, 0.2);
+        }
+
+        .btn-next:hover {
+            background-color: #1a51da;
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Cover slide specific */
+        .cover-slide {
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .cover-slide.active {
+            display: flex !important;
+        }
+
+        .cover-badge {
+            background-color: var(--danger-light);
+            color: var(--danger-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+        
+        .cover-year {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .cover-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            line-height: 1.3;
+            margin-bottom: 24px;
+            word-break: keep-all;
+        }
+
+        .cover-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-bottom: 48px;
+        }
+
+        .start-btn {
+            padding: 16px 48px;
+            font-size: 1.25rem;
+            border-radius: 40px;
+        }
+
+        /* Data table styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            margin-bottom: 24px;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #f8fafc;
+            font-weight: 700;
+            color: var(--text-dark);
+            width: 30%;
+        }
+
+        .highlight-text {
+            color: var(--danger-color);
+            font-weight: 700;
+        }
+    
+        /* Split layout container */
+        .slide-split {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            align-items: flex-start;
+            flex: 1;
+            min-height: 0;
+            margin-top: 20px;
+        }
+        .slide-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+            overflow-y: auto;
+            max-height: 60vh;
+            padding-right: 16px;
+        }
+        .slide-left img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            object-fit: contain;
+        }
+        .slide-right {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 60vh;
+            padding-right: 16px;
+        }
+        
+        /* Make slide wider to accommodate split */
+        .slide {
+            max-width: 1400px !important;
+        }
+  </style>
+ </head>
+ <body>
+  <!-- 사이드바 (목차) -->
+  <aside class="sidebar">
+   <div class="sidebar-header">
+    <h1>
+     혁신소상공인 (LIPSⅡ)
+     <br/>
+     중간점검 매뉴얼
+    </h1>
+    <p>
+     실무자용 점검 가이드
+    </p>
+   </div>
+   <ul class="nav-list" id="navList">
+    <!-- JS로 렌더링됨 -->
+   </ul>
+  </aside>
+  <!-- 메인 컨텐츠 영역 -->
+  <main class="main-content">
+   <!-- 상단 진행바 -->
+   <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar">
+    </div>
+   </div>
+   <div class="slide-container">
+    <!-- 슬라이드 0: 커버 -->
+    <div class="slide cover-slide active" id="slide-0">
+     <div class="cover-badge">
+      대외비 · 실무자 참고용
+     </div>
+     <div class="cover-year">
+      2025년 혁신소상공인 투자연계지원(LIPSⅡ)
+     </div>
+     <h2 class="cover-title">
+      중간점검 실무 매뉴얼
+     </h2>
+     <div class="cover-subtitle">
+      빠르고 정확한 서류 검토를 위한 스텝 바이 스텝 가이드
+     </div>
+     <button class="btn btn-next start-btn" onclick="goToStep(1)">
+      매뉴얼 시작하기
+     </button>
+    </div>
+    <!-- 슬라이드 1: 사전 준비 -->
+    <div class="slide" id="slide-1">
+     <h2 class="slide-title">
+      1. 사전 준비
+     </h2>
+     <div class="content-section">
+      <h3>
+       검토 전 준비 서류
+      </h3>
+      <p>
+       중간점검을 시작하기 전에 아래의 3가지 서류를 준비(확인)해 주세요.
+      </p>
+      <div class="link-grid">
+       <button class="file-link-btn" onclick="openDriveLink('report')">
+        <span class="icon">
+         📄
+        </span>
+        중간점검보고서 열기
+       </button>
+       <button class="file-link-btn" onclick="openDriveLink('plan')">
+        <span class="icon">
+         📝
+        </span>
+        수정사업계획서 열기
+       </button>
+       <button class="file-link-btn" onclick="openDriveLink('data')">
+        <span class="icon">
+         📊
+        </span>
+        질링스 데이터 및 집행률 열기
+       </button>
+      </div>
+      <p style="margin-top:20px; font-size: 0.9rem; color: #718096; text-align: center;">
+       <span class="highlight-text">
+        * 주의:
+       </span>
+       파일 링크 수정은 메모장 등으로 index.html을 열어 최상단 설정(CONFIG)을 변경해 주세요.
+      </p>
+     </div>
+    </div>
+    <!-- 슬라이드 2: 기업정보 검토사항 -->
+    <div class="slide" id="slide-2">
+     <h2 class="slide-title">
+      2. 기업정보 검토사항
+     </h2>
+     <div class="slide-split">
+      <div class="slide-left">
+       <img src="extracted_images/BIN0005a.bmp.bmp"/>
+       <img src="extracted_images/BIN0005.bmp.bmp"/>
+       <img src="extracted_images/BIN0006.bmp.bmp"/>
+      </div>
+      <div class="slide-right">
+       <div class="content-section">
+        <h3>
+         주요 대조 확인 내용
+        </h3>
+        <ul class="check-list">
+         <li>
+          <strong>
+           운영사명 / 기업명 / 대표자명
+          </strong>
+          : <br>수정사업계획서의 내용과 완벽히 동일한지 확인
+         </li>
+         <li>
+          <strong>
+           지원구분 / 법인 계속 유지 여부 / 분야
+          </strong>
+          : <br>체크 여부 확인 및 수정사업계획서 내용과 일치 여부 <br>(예: 스케일딥 / 스케일업 등)
+         </li>
+         <li>
+          <strong>
+           주업종
+          </strong>
+          : 수정사업계획서의 주업종과 동일한지 확인 <br>(※사업자등록증과도 동일한지 대조)
+         </li>
+         <li>
+          <strong>
+           아이템명
+          </strong>
+          : 수정사업계획서의 "사업아이템명"과 동일한지 확인 <br>(
+          <span class="highlight-text">
+           사업아이템소개X
+          </span>
+          )
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- 슬라이드 3: 사업비 집행 검토사항 -->
+    <div class="slide" id="slide-3">
+     <h2 class="slide-title">
+      3. 사업비 집행 검토사항
+     </h2>
+     <div class="slide-split">
+      <div class="slide-left">
+       <img src="extracted_images/BIN000Fa.bmp.bmp"/>
+       <img src="extracted_images/BIN0002.bmp.bmp"/>
+      </div>
+      <div class="slide-right">
+       <div class="content-section">
+        <h3>
+         집행 금액 대조표 검토
+        </h3>
+        <p>
+         사업시작일로부터 기준일의
+         <strong>
+          총 사업비
+         </strong>
+         ,
+         <strong>
+          정부지원금
+         </strong>
+         ,
+         <strong>
+          자기부담금(현금+현물)
+         </strong>
+         내역을 확인합니다.
+        </p>
+        <table class="data-table">
+         <tbody>
+          <tr>
+           <th>
+            확인 지표
+           </th>
+           <td>
+            예산, 집행금액, 집행잔액, 집행률(%)
+           </td>
+          </tr>
+          <tr>
+           <th>
+            핵심 검토사항
+           </th>
+           <td>
+            <strong>
+             사업비 집행 내용이 질링스 사업비 집행 내용과 동일한지
+            </strong>
+            <br>반드시 확인합니다.
+           </td>
+          </tr>
+          <tr>
+           <th>
+            참고 파일
+           </th>
+           <td>
+            [질링스 데이터 및 사업비 집행률.xlsx] 파일 대조
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- 슬라이드 4: 주요 추진실적 검토사항 -->
+    <div class="slide" id="slide-4">
+     <h2 class="slide-title">
+      4. 주요 추진실적 검토사항
+     </h2>
+     <div class="slide-split">
+      <div class="slide-left">
+       <img src="extracted_images/BIN0003a.bmp.bmp"/>
+       <img src="extracted_images/BIN0003.bmp.bmp"/>
+      </div>
+      <div class="slide-right">
+       <div class="content-section">
+        <h3>
+         실적 지표 (3개월 기준)
+        </h3>
+        <ul class="check-list">
+         <li>
+          항목별 주요 추진실적 내용이
+          <strong>
+           질링스 데이터와 동일한지
+          </strong>
+          대조
+         </li>
+         <li>
+          <strong>
+           매출액
+          </strong>
+          : 국내 매출액을 기준으로 확인
+         </li>
+         <li>
+          <strong>
+           수출액
+          </strong>
+          : 해당 기간 내 수출 실적 확인
+         </li>
+         <li>
+          <strong>
+           고용
+          </strong>
+          : 협약 시점 인원, 3개월 후 인원 동일한지 확인 <br> 신규 고용 인원 확인
+         </li>
+         <li>
+          <strong>
+           투자
+          </strong>
+          : (투자처), (투자금액), (투자 계약일) 해당 양식에 맞게 작성했는지
+         </li>
+         <li>
+          <strong>
+           지재권
+          </strong>
+          : 출원 및 등록 건수(00건) 확인
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- 슬라이드 5: 사업운영 실적 검토사항 -->
+    <div class="slide" id="slide-5">
+     <h2 class="slide-title">
+      5. 사업운영 실적 검토사항
+     </h2>
+     <div class="slide-split">
+      <div class="slide-left">
+       <img src="extracted_images/BIN0004.bmp.bmp"/>
+       <img src="extracted_images/BIN0007.bmp.bmp"/>
+       <img src="extracted_images/BIN0008.bmp.bmp"/>
+       <img src="extracted_images/BIN0009.bmp.bmp"/>
+      </div>
+      <div class="slide-right">
+       <div class="content-section">
+        <h3>
+         추진 내용 및 목표 달성 검토
+        </h3>
+        <ul class="check-list">
+         <li>
+          <strong>
+           수정사업계획서의 추진 내용과 동일한지
+          </strong>
+          :
+          <br/>
+          <code>
+           ③ 달성목표 및 사업추진 계획 -&gt; 협약기간 내 목표 및 달성 계획 -&gt; 추진 내용
+          </code>
+          항목 대조
+         </li>
+         <li>
+          <strong>
+           세부 추진 실적
+          </strong>
+          및
+          <strong>
+           향후 추진 계획
+          </strong>
+          이 알맞게 작성되었는지 논리적 검토
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- 슬라이드 6: 사업비 구성 및 집행 현황 (중요) -->
+    <div class="slide slide-important" id="slide-6">
+     <h2 class="slide-title">
+      6. 사업비 구성 및 집행 현황 (!매우 중요)
+     </h2>
+     <div class="slide-split">
+      <div class="slide-left">
+       <img src="extracted_images/BIN000A.bmp.bmp"/>
+       <img src="extracted_images/BIN0010.bmp.bmp"/>
+       <img src="extracted_images/BIN000B.bmp.bmp"/>
+       <img src="extracted_images/BIN000C.bmp.bmp"/>
+       <img src="extracted_images/BIN000D.bmp.bmp"/>
+       <img src="extracted_images/BIN000E.bmp.bmp"/>
+       <img src="extracted_images/BIN000F.bmp.bmp"/>
+       <img src="extracted_images/BIN0011.bmp.bmp"/>
+      </div>
+      <div class="slide-right">
+       <div class="content-section">
+        <h3>
+         가장 빈번하게 오류가 발생하는 항목입니다.
+        </h3>
+        <ul class="check-list">
+         <li>
+          <strong>
+           예산 구성 일치
+          </strong>
+          : 사업비 예산 구성이 질링스 데이터와 동일한지,<br>
+          <strong>
+           비율
+          </strong>
+          을 알맞게 표기했는지 점검
+         </li>
+         <li>
+          <strong>
+           수정사업계획서 일치
+          </strong>
+          : 수정사업계획서의 예산안과 동일한지 대조
+         </li>
+         <li>
+          <strong>
+           집행률 검토
+          </strong>
+          : 합계 금액 및
+          <strong>
+           합계 집행률
+          </strong>
+          이 제대로 계산되었는지 확인
+         </li>
+         <li>
+          <strong>
+           세목별 분리
+          </strong>
+          : 집행내용/예산 항목을 세목별로 각각 기재하였는가?
+         </li>
+         <li>
+          <strong>
+           1페이지 매칭
+          </strong>
+          : 1페이지의 "사업비 집행" 섹션에 적힌<br>
+          <strong>
+           집행 금액 및 집행률
+          </strong>
+          과 일치하는가?
+         </li>
+         <li>
+          <strong>
+           부진 사유
+          </strong>
+          : 집행률이 낮은 경우 집행 부진 사유가 작성되었는지 확인
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- 슬라이드 7: 협약 변경 사항 검토사항 -->
+    <div class="slide" id="slide-7">
+     <h2 class="slide-title">
+      7. 협약 변경 사항 검토사항
+     </h2>
+     <div class="slide-split">
+      <div class="slide-left">
+       <img src="extracted_images/BIN0001.bmp.bmp"/>
+      </div>
+      <div class="slide-right">
+       <div class="content-section">
+        <h3>
+         협약 변경 이력 검토
+        </h3>
+        <ul class="check-list">
+         <li>
+          협약 변경 내용이 양식에 맞게 알맞게 작성되었는지 확인
+         </li>
+         <li>
+          변경 사항이
+          <strong>
+           없을 경우
+          </strong>
+          , 공란으로 두지 않고
+          <span class="highlight-text">
+           “해당 내용 없음”
+          </span>
+          이라고 <br>작성하였는지 필수 확인
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- 하단 컨트롤 버튼 -->
+   <div class="controls">
+    <button class="btn btn-prev" id="btnPrev" onclick="goToStep(currentStep - 1)">
+     ← 이전 단계
+    </button>
+    <span id="stepIndicator" style="font-weight: 600; color: var(--text-gray);">
+    </span>
+    <button class="btn btn-next" id="btnNext" onclick="goToStep(currentStep + 1)">
+     다음 단계 →
+    </button>
+   </div>
+  </main>
+  <script>
+   // ==========================================
+        // [설정] 공용 구글 드라이브 링크를 아래에 입력해 주세요.
+        // ==========================================
+        const CONFIG = {
+            driveLinks: {
+                // 예: "https://docs.google.com/document/d/..." 형태
+                report: "", // 중간점검보고서 링크
+                plan: "",   // 수정사업계획서 링크
+                data: ""    // 질링스데이터 및 사업비 집행률 엑셀 링크
+            }
+        };
+
+        const steps = [
+            { id: 0, title: "커버 페이지", short: "홈" },
+            { id: 1, title: "사전 준비", short: "사전 준비" },
+            { id: 2, title: "기업정보 검토사항", short: "기업정보" },
+            { id: 3, title: "사업비 집행 검토사항", short: "사업비 집행" },
+            { id: 4, title: "주요 추진실적 검토", short: "추진실적" },
+            { id: 5, title: "사업운영 실적 검토사항", short: "운영 실적" },
+            { id: 6, title: "사업비 구성 및 집행 현황 중요", short: "예산/집행 현황" },
+            { id: 7, title: "협약 변경 사항 검토사항", short: "협약 변경" }
+        ];
+
+        let currentStep = 0;
+
+        function init() {
+            renderSidebar();
+            updateUI();
+        }
+
+        function renderSidebar() {
+            const navList = document.getElementById('navList');
+            navList.innerHTML = '';
+            
+            steps.forEach((step, index) => {
+                if(index === 0) return; // 커버 페이지는 목차에서 제외하거나 포함 (여기선 포함)
+                
+                const li = document.createElement('li');
+                li.className = 'nav-item';
+                li.innerHTML = `
+                    <button class="nav-button ${index === currentStep ? 'active' : ''}" onclick="goToStep(${index})" id="nav-btn-${index}">
+                        <span class="step-number">${index}</span>
+                        ${step.short}
+                    </button>
+                `;
+                navList.appendChild(li);
+            });
+        }
+
+        function updateUI() {
+            // 사이드바 액티브 상태 변경
+            document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`nav-btn-${currentStep}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // 슬라이드 표시 변경
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            document.getElementById(`slide-${currentStep}`).classList.add('active');
+            
+            // 프로그레스 바 업데이트
+            const progressPercentage = (currentStep / (steps.length - 1)) * 100;
+            document.getElementById('progressBar').style.width = `${progressPercentage}%`;
+
+            // 버튼 상태 업데이트
+            const btnPrev = document.getElementById('btnPrev');
+            const btnNext = document.getElementById('btnNext');
+            const stepIndicator = document.getElementById('stepIndicator');
+
+            if (currentStep === 0) {
+                btnPrev.style.visibility = 'hidden';
+                btnNext.style.display = 'none'; // 커버 페이지 자체 버튼을 쓰기 위해 숨김
+                stepIndicator.style.display = 'none';
+            } else {
+                btnPrev.style.visibility = 'visible';
+                btnNext.style.display = 'block';
+                stepIndicator.style.display = 'inline';
+                stepIndicator.textContent = `진행도: ${currentStep} / ${steps.length - 1}`;
+            }
+
+            btnPrev.disabled = currentStep === 0;
+            
+            if (currentStep === steps.length - 1) {
+                btnNext.textContent = "검토 완료 ✓";
+                btnNext.onclick = () => alert('수고하셨습니다! 모든 검토 항목을 확인했습니다.');
+            } else {
+                btnNext.textContent = "다음 단계 →";
+                btnNext.onclick = () => goToStep(currentStep + 1);
+            }
+        }
+
+        function goToStep(stepIndex) {
+            if (stepIndex >= 0 && stepIndex < steps.length) {
+                currentStep = stepIndex;
+                updateUI();
+                // 스크롤 탑
+                document.querySelector('.slide-container').scrollTop = 0;
+            }
+        }
+
+        function openDriveLink(type) {
+            const link = CONFIG.driveLinks[type];
+            if (link && link.trim() !== "") {
+                window.open(link, '_blank');
+            } else {
+                alert('연결된 구글 드라이브 링크가 없습니다. index.html 파일 내 CONFIG 코드를 수정하여 링크를 삽입해주세요.');
+            }
+        }
+
+        // 초기화 실행
+        window.onload = init;
+  </script>
+ </body>
+</html>
